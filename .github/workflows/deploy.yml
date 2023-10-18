@@ -30,7 +30,7 @@ jobs:
       - name: Publish to GitHub Packages
         run: mvn -s $GITHUB_WORKSPACE/settings.xml clean deploy
         env:
-          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+          GPG_PASSPHRASE: ${{ secrets.GITHUB_TOKEN }}
           GPG_USERNAME:  ${{ secrets.GPG_USERNAME }}
           REPO_USER: ${{ secrets.REPO_USER }}
           REPO_PASSWORD: ${{ secrets.REPO_PASSWORD }}

@@ -203,6 +203,9 @@ public class UpdateChecker {
     }
 
 
+    /**
+     * Callback for the github api
+     */
     private class GithubAPICallback implements Callback {
         private final Version usingVersion;
 

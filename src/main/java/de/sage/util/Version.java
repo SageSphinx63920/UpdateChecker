@@ -39,7 +39,7 @@ final class Version implements Comparable<Version> {
      */
     public Version(@NotNull String version, boolean githubPrerelease) {
         if (!version.matches("[0-9]+(\\.[0-9]+)*"))
-            throw new IllegalArgumentException("Invalid version format");
+            throw new IllegalArgumentException("Invalid version format! This could be due to not recognized tag ending. Supported format is: int.int.int...(-snapshot/dev)");
 
         this.version = version;
 

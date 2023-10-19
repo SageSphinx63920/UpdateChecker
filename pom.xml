@@ -28,10 +28,10 @@
 
     <distributionManagement>
         <repository>
-           <id>github</id>
-           <name>GitHub SageSphinx63920 Apache Maven Packages</name>
-           <url>https://maven.pkg.github.com/SageSphinx63920/UpdateChecker</url>
-       </repository>
+            <id>github</id>
+            <name>GitHub SageSphinx63920 Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/SageSphinx63920/UpdateChecker</url>
+        </repository>
 
         <!--repository>
             <id>sage-releases</id>
@@ -67,6 +67,15 @@
                     <show>private</show>
                     <doclint>all,-missing</doclint>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -75,8 +84,23 @@
                 <executions>
                     <execution>
                         <id>attach-sources</id>
+                        <phase>deploy</phase>
                         <goals>
-                            <goal>jar</goal>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>3.1.1</version>
+                <executions>
+                    <execution>
+                        <id>deploy</id>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>deploy</goal>
                         </goals>
                     </execution>
                 </executions>

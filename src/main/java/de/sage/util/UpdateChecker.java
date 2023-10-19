@@ -96,21 +96,19 @@ public class UpdateChecker {
      * @throws IOException throws if there is a problem with okhttp
      */
     public void check() throws IOException {
-
-        Request request = new Request.Builder().url(uri.toURL()).build();
-
-
         if (token != null) {
-
-            request.headers().newBuilder()
+            Headers headers = new Headers.Builder()
                     .add("Accept", "application/vnd.github+json")
                     .add("Authorization", "Bearer " + token)
                     .add("X-GitHub-Api-Version", "2022-11-28").build();
 
+            Request request = new Request.Builder().url(uri.toURL()).headers(headers).build();
 
             client.newCall(request).enqueue(new GithubAPICallback(version));
-        } else
+        } else{
+            Request request = new Request.Builder().url(uri.toURL()).build();
             client.newCall(request).enqueue(new GithubPublicCallback(version));
+        }
     }
 
     public void notifyStatus() {
@@ -184,13 +182,13 @@ public class UpdateChecker {
             if (response.code() == 404)
                 throw new ConnectException("Could not connect to this repo. This could be due to the repository being private, if so try using the other version method with the github api, or it does not exists.");
 
-            String latestURL = response.headers().get("Location");
+            String latestURL = response.request().url().toString();
+            String[] urlParts = latestURL.split("/");
 
-            if (latestURL == null) {
+            if (urlParts.length != 8) {
                 throw new IOException("No version found!");
             }
 
-            String[] urlParts = latestURL.split("/");
             Version latest = new Version(removePrefix(urlParts[urlParts.length - 1]));
 
             compareVersions(usingVersion, latest);

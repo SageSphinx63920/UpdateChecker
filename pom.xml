@@ -6,7 +6,7 @@
 
     <groupId>de.sage.util</groupId>
     <artifactId>updatechecker</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 
     <name>UpdateChecker</name>
     <description>Checks for newer releases on github public or private repositories</description>
@@ -28,10 +28,10 @@
 
     <distributionManagement>
         <repository>
-           <id>github</id>
-           <name>GitHub SageSphinx63920 Apache Maven Packages</name>
-           <url>https://maven.pkg.github.com/SageSphinx63920/UpdateChecker</url>
-       </repository>
+            <id>github</id>
+            <name>GitHub SageSphinx63920 Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/SageSphinx63920/UpdateChecker</url>
+        </repository>
 
         <!--repository>
             <id>sage-releases</id>
@@ -59,6 +59,11 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.3.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>3.6.0</version>
                 <configuration>
@@ -67,19 +72,6 @@
                     <show>private</show>
                     <doclint>all,-missing</doclint>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>3.3.0</version>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>

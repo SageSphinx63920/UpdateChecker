@@ -28,7 +28,7 @@ jobs:
         run: git config --global user.email "no-reply@github.com" && git config --global user.name "Github Actions"
 
       - name: Publish to GitHub Packages
-        run: mvn -s $GITHUB_WORKSPACE/settings.xml clean deploy
+        run: mvn -s $GITHUB_WORKSPACE/settings.xml clean source:jar-no-fork javadoc:jar deploy
         env:
           GPG_PASSPHRASE: ${{ secrets.GITHUB_TOKEN }}
           GPG_USERNAME:  ${{ secrets.GPG_USERNAME }}

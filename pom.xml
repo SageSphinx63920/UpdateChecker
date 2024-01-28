@@ -6,7 +6,7 @@
 
     <groupId>de.sage.util</groupId>
     <artifactId>updatechecker</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.2-SNAPSHOT</version>
 
     <name>UpdateChecker</name>
     <description>Checks for newer releases on github public or private repositories</description>

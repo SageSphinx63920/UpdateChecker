@@ -6,7 +6,7 @@
 
     <groupId>de.sage.util</groupId>
     <artifactId>updatechecker</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 
     <name>UpdateChecker</name>
     <description>Checks for newer releases on github public or private repositories</description>
@@ -21,8 +21,6 @@
     </licenses>
 
     <properties>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -50,11 +48,11 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.11.0</version>
+                <version>3.12.1</version>
                 <configuration>
-                    <release>${java.version}</release>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
+                    <release>21</release>
+                    <source>21</source>
+                    <target>21</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -65,11 +63,11 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.6.0</version>
+                <version>3.6.3</version>
                 <configuration>
-                    <source>${java.version}</source>
+                    <source>21</source>
                     <encoding>${project.build.sourceEncoding}</encoding>
-                    <show>private</show>
+                    <show>public</show>
                     <doclint>all,-missing</doclint>
                 </configuration>
             </plugin>

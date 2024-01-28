@@ -12,16 +12,16 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up JDK 21 🛠
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           java-version: 21
           distribution: 'temurin'
           cache: 'maven'
 
-      - name: Setup Maven 3.9.5 🔮
+      - name: Setup Maven 3.9.6 🔮
         uses: stCarolas/setup-maven@v4.5
         with:
-          maven-version: 3.9.5
+          maven-version: 3.9.6
 
       - name: Compile project ⚙
         run: mvn -B compile --file pom.xml
